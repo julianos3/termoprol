@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+/**
+ * Class CreateNewslettersTable.
+ */
+class CreateNewslettersTable extends Migration
+{
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('newsletters', function(Blueprint $table) {
+            $table->increments('id');
+            $table->string('name')->nullable();
+            $table->string('email');
+            $table->timestamps();
+            $table->softDeletesTz();
+		});
+	}
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::drop('newsletters');
+	}
+}
